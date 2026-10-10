@@ -30,6 +30,7 @@
 
   /* Colours sampled from the key art. */
   :root {
+    --ink: #110a08;
     --night: #1a0300;
     --well: #230400;
     --maroon: #3b0e02;
@@ -64,18 +65,11 @@
   }
   .wrap { max-width: var(--col); margin: 0 auto; padding: 0 16px; }
 
-  /* Twisted rope, as drawn in the key art. Used as the divider between sections. */
-  .rope {
-    height: 10px;
-    background: repeating-linear-gradient(-60deg, var(--rope) 0 7px, #c43400 7px 11px);
-    box-shadow: 0 3px 0 var(--wine);
-  }
-
   /* ---------- Hero ---------- */
   .hero { background: var(--maroon); }
   .hero img { width: 100%; height: auto; }
   .rim {
-    background: var(--maroon);
+    background: linear-gradient(var(--maroon), var(--ink) 140px);
     padding: 28px 16px 56px;
     text-align: center;
   }
@@ -83,19 +77,13 @@
     font-size: 64px; line-height: 1.1;
     margin: 0 0 14px;
     color: var(--cream);
-    text-shadow: 4px 4px 0 var(--rope);
   }
   .sub { margin: 0 auto 26px; max-width: 36em; color: var(--peach); font-size: 20px; }
 
-  .stamps { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 12px; margin: 0 0 30px; padding: 0; list-style: none; }
-  .stamps li {
-    font-size: 32px; line-height: 1;
-    padding: 10px 14px 8px;
-    color: var(--cream);
-    background: var(--wine);
-    box-shadow: inset 0 0 0 2px var(--rust);
-  }
-  .stamps li.hot { background: var(--cream); color: var(--well); box-shadow: 4px 4px 0 var(--rope); }
+  .status { font-size: 32px; line-height: 1.3; margin: 0 auto 30px; color: var(--muted); }
+  .status b { font-weight: 400; color: var(--cream); }
+  .status i { font-style: normal; color: var(--rust); padding: 0 10px; }
+  .status b, .status span { white-space: nowrap; }
 
   .ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
   .btn {
@@ -110,8 +98,8 @@
   }
   .btn:hover { color: var(--well); background: var(--rope-hi); transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--rust); }
   .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--rust); }
-  .btn.quiet { background: transparent; color: var(--cream); box-shadow: inset 0 0 0 2px var(--rust); }
-  .btn.quiet:hover { background: var(--wine); box-shadow: inset 0 0 0 2px var(--cream), 4px 4px 0 var(--rust); }
+  .btn.quiet { background: transparent; color: var(--cream); box-shadow: inset 0 0 0 2px rgba(251, 243, 224, .28); }
+  .btn.quiet:hover { background: rgba(251, 243, 224, .06); box-shadow: inset 0 0 0 2px var(--cream); }
 
   /* ---------- Sections ---------- */
   section { padding: 72px 0 80px; }
@@ -123,7 +111,7 @@
   p { margin: 0 0 16px; }
 
   /* Trailer */
-  .trailer { padding-top: 64px; }
+  .trailer { padding-top: 40px; background: var(--ink); }
   .screen {
     position: relative;
     background: #000;
@@ -247,7 +235,9 @@
     .facts th { width: 8.25rem; }
   }
   @media (max-width: 480px) {
-    h1 { font-size: 32px; text-shadow: 3px 3px 0 var(--rope); }
+    h1 { font-size: 32px; }
+    .status i { display: none; }
+    .status b, .status span { display: block; }
     .btn { width: 100%; text-align: center; }
     .play { padding: 10px 16px 8px; top: 42%; }
     .gallery { grid-template-columns: 1fr; }
@@ -276,11 +266,7 @@
   <div class="rim">
     <h1 class="pixel">One rope. One thousand ways down.</h1>
     <p class="sub">Rope swing down an endless wishing well. A physics-driven action roguelite built for precision, improvisation and movement bliss.</p>
-    <ul class="stamps pixel">
-      <li class="hot">Free demo on Steam now</li>
-      <li>Steam Next Fest · Oct 19–26</li>
-      <li>Out December 25, 2026</li>
-    </ul>
+    <p class="status pixel"><b>Free demo on Steam now</b><i>·</i><span>Steam Next Fest, Oct 19–26</span><i>·</i><span>Out December 25, 2026</span></p>
     <div class="ctas">
       <a class="btn pixel" href="https://store.steampowered.com/app/5186140/Wishknot/">Wishlist on Steam</a>
       <a class="btn quiet pixel" href="#trailer">Watch the trailer</a>
@@ -288,8 +274,6 @@
     </div>
   </div>
 </header>
-
-<div class="rope" aria-hidden="true"></div>
 
 <main>
 
@@ -377,9 +361,7 @@
     </div>
   </section>
 
-  <div class="rope" aria-hidden="true"></div>
-
-  <section class="tone-a" id="press" aria-labelledby="press-title">
+    <section class="tone-a" id="press" aria-labelledby="press-title">
     <div class="wrap">
       <span class="eyebrow pixel">For press and creators</span>
       <h2 class="pixel" id="press-title">Press kit</h2>
